@@ -1,0 +1,54 @@
+@use "@/styles/_setting/index" as set;
+
+/**
+* base
+*/
+html {
+  overflow-y: scroll;
+}
+
+body {
+  min-width: var(--min-pc-width);
+  font-size: set.rem(16);
+  line-height: 1.5;
+  color: var(--base-font-color);
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+picture {
+  display: block;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+dl,
+dt,
+dd {
+  padding: 0;
+  margin: 0;
+}
+
+p,
+figure {
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
