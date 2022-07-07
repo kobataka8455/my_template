@@ -1,17 +1,18 @@
-@use "@/styles/_setting/index" as set;
+@use "@/styles/_setting/index" as s;
 
 /**
 * base
 */
 html {
   overflow-y: scroll;
+  font-size: 62.5%;
 }
 
 body {
-  min-width: var(--min-pc-width);
-  font-size: set.rem(16);
-  line-height: 1.5;
-  color: var(--base-font-color);
+  @include s.font-type("body");
+
+  min-width: var(--s-pc-w);
+  color: var(--c-text);
 }
 
 img {
@@ -52,3 +53,29 @@ h6 {
   padding: 0;
   margin: 0;
 }
+
+a {
+  color: var(--c-text);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  appearance: none;
+}
+
+.wrapper {
+  background: var(--c-bg);
+}
+
+// .contents {
+// }

@@ -1,0 +1,91 @@
+@use "@/styles/_setting/index" as s;
+@use "sass:math";
+
+/**
+* header
+*/
+.header {
+  $this: &;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  line-height: 1;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    width: 89vw;
+    min-width: var(--s-pc-w);
+    padding: 32px 0;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    margin-right: auto;
+  }
+
+  // &__nav {
+  // }
+
+  &__nav-list {
+    display: flex;
+    gap: 8px 56px;
+  }
+
+  // &__nav-item {
+  // }
+
+  &__nav-link {
+    color: #cfdaea;
+  }
+
+  &__button {
+    padding: 1px;
+    margin-left: 56px;
+    background: var(--c-gradient);
+    border-radius: 999px;
+  }
+
+  &__button-inner {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: var(--c-bg);
+    border-radius: 999px;
+    transition: background var(--t-animation);
+
+    &::after {
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      content: "";
+      background: url("@/images/icon/arrow-right.svg") 0 0 no-repeat;
+    }
+  }
+
+  &__button:hover &__button-inner {
+    &::after {
+      @include s.arrow;
+    }
+  }
+
+  &__button-text {
+    display: block;
+    background: var(--c-gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__button:hover {
+    #{$this}__button-inner {
+      background: none;
+    }
+    #{$this}__button-text {
+      color: var(--c-bg);
+      background: none;
+      background-clip: unset;
+      -webkit-text-fill-color: unset;
+    }
+  }
+}

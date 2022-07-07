@@ -1,2 +1,13 @@
 <% const EJS = `${process.cwd()}/src/ejs`; %>
-<%- include(`${EJS}/_word`) %>
+<div class="wrapper">
+  <%- include(`${EJS}/_header`) %>
+  <div class="contents">
+    <%- include(`${EJS}/_mv`) %>
+    <%- include(`${EJS}/_feature`) %>
+    <%- include(`${EJS}/_community`) %>
+    <%- include(`${EJS}/_appeal`) %>
+    <%- include(`${EJS}/_cv`) %>
+    <%- include(`${EJS}/_roadmap`) %>
+    <%- include(`${EJS}/_footer`) %>
+  </div>
+</div>

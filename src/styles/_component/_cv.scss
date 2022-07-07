@@ -1,0 +1,45 @@
+@use "@/styles/_setting/index" as s;
+@use "sass:math";
+
+/**
+* cv
+*/
+.cv {
+  $this: &;
+
+  max-width: var(--s-pc-w);
+  padding: 160px 0;
+  margin: 0 auto;
+
+  &__title {
+    @include s.font-type("h1");
+
+    margin-bottom: s.$space * 6;
+  }
+
+  &__title-emphasis {
+    display: block;
+    background: var(--c-gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    line-height: 1;
+    color: var(--c-bg);
+    background: var(--c-gradient);
+    border-radius: 999px;
+
+    &::after {
+      @include s.arrow;
+
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      content: "";
+    }
+  }
+}

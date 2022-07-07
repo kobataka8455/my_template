@@ -1,0 +1,48 @@
+@use "@/styles/_setting/index" as s;
+@use "sass:math";
+
+/**
+* community
+*/
+.community {
+  $this: &;
+
+  max-width: var(--s-pc-w);
+  padding: 160px 0;
+  margin: 0 auto;
+
+  &__inner {
+    padding: 64px;
+    background: linear-gradient(86.02deg, rgba(114, 163, 240, 30%) 5.41%, rgba(250, 228, 237, 30%) 41.8%, rgba(250, 193, 174, 30%) 85.68%);
+    border-radius: 30px;
+    box-shadow: inset 3px 2px 11px rgba(255, 255, 255, 25%);
+  }
+
+  &__layout {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  // &__layout-main {
+  // }
+  &__head {
+    @include s.font-type("h3");
+
+    display: block;
+    margin-bottom: s.$space * 2;
+    background: linear-gradient(86.02deg, #72a3f0 5.41%, #fae4ed 41.8%, #fac1ae 85.68%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__title {
+    @include s.font-type("h2");
+
+    margin-bottom: s.$space * 4;
+  }
+
+  &__layout-image {
+    flex-shrink: 0;
+  }
+}

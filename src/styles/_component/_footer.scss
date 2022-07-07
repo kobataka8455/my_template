@@ -1,0 +1,47 @@
+@use "@/styles/_setting/index" as s;
+@use "sass:math";
+
+/**
+* footer
+*/
+.footer {
+  $this: &;
+
+  max-width: var(--s-pc-w);
+  padding: 72px 0;
+  margin: 0 auto;
+
+  &__layout {
+    display: flex;
+  }
+
+  // &__logo {
+  // }
+  &__links {
+    display: flex;
+    gap: 112px;
+    margin-left: auto;
+  }
+
+  &__link-title {
+    @include s.font-type("caption");
+
+    margin-bottom: s.$space * 2;
+    color: #5f6d82;
+  }
+
+  &__link-item {
+    @include s.font-type("h4");
+
+    &:not(:last-child) {
+      margin-bottom: s.$space * 3;
+    }
+  }
+
+  &__copy {
+    @include s.font-type("caption");
+
+    margin-top: -1.5em;
+    color: #5f6d82;
+  }
+}

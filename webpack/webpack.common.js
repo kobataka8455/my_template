@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  stats: 'errors-only',
   entry: {
     app: path.resolve(__dirname, "../src/scripts/index.js"),
   },

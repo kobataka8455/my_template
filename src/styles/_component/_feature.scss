@@ -1,0 +1,67 @@
+@use "@/styles/_setting/index" as s;
+@use "sass:math";
+
+/**
+* feature
+*/
+.feature {
+  $this: &;
+
+  max-width: 1000px;
+  padding: 160px 0;
+  margin: 0 auto;
+
+  &__layout {
+    display: flex;
+    gap: 32px;
+  }
+
+  // &__layout-main {
+  // }
+
+  &__layout-title {
+    @include s.font-type("h2");
+
+    margin-bottom: s.$space * 2;
+  }
+
+  &__layout-text {
+    @include s.font-type("body");
+  }
+
+  &__layout-image {
+    flex-shrink: 0;
+    width: 488px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  //  first
+  // ---------------------------------------------------------
+  &__layout.--first {
+    margin-bottom: 64px;
+
+    #{$this}__layout-main {
+      padding-top: 24px;
+    }
+  }
+
+  //  second
+  // ---------------------------------------------------------
+  &__layout.--second {
+    flex-direction: row-reverse;
+    margin-bottom: 64px;
+
+    // #{$this}__layout-main {
+    // width: calc(478 / 1440 * 100%);
+    // }
+  }
+
+  //  third
+  // ---------------------------------------------------------
+  // &__layout.--third{
+  // }
+}

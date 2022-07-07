@@ -1,0 +1,57 @@
+@use "@/styles/_setting/index" as s;
+@use "sass:math";
+
+/**
+* roadmap
+*/
+.roadmap {
+  $this: &;
+
+  padding: 160px 0;
+  background: url("@/images/roadmap-bg1.svg") 50% calc(50% + 40px) no-repeat;
+
+  &__inner {
+    max-width: var(--s-pc-w);
+    margin: 0 auto;
+  }
+
+  &__title {
+    @include s.font-type("h3");
+
+    display: table;
+    margin-bottom: s.$space * 5;
+    background: var(--c-gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__content {
+    position: relative;
+    height: 736px; // for Figma Data
+  }
+
+  &__item {
+    position: absolute;
+    width: 310px;
+    height: 310px;
+    background: rgba(255, 255, 255, 40%);
+    border-radius: 24px;
+    backdrop-filter: blur(32.5px);
+
+    &:nth-child(1) {
+      top: 0;
+      left: 0;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:nth-child(3) {
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
