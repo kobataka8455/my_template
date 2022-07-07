@@ -1,0 +1,39 @@
+<%
+const meta = {
+  en:{
+    top: {
+      title:`AsaB`,
+      description:`AsaB description`
+    }
+  },
+  jp:{
+    top: {
+      title:`AsaB`,
+      description:`AsaB description`
+    }
+  }
+}
+%>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title><%= meta[lang][pagename].title %></title>
+<meta name="description" content="<%= meta[lang][pagename].description %>">
+<!-- <link rel="canonical" href="https://teracy.io/"> -->
+
+<meta name="twitter:card" content="summary_large_image"><!-- ※Twitterogp -->
+<meta name="twitter:title" content="<%= meta[lang][pagename].title %>">
+<meta name="twitter:description" content="<%= meta[lang][pagename].description %>">
+<meta name="twitter:image:src" content="https://teracy.io/<%- process.env.NODE_ENV !== 'production' ? 'dev/' : '' %>og-image-<%= lang %>.png">
+<meta property="og:type" content="website">
+<% if(lang === 'en') { %>
+<!-- <meta property="og:url" content="https://teracy.io/"> -->
+<% } else { %>
+<!-- <meta property="og:url" content="https://teracy.io/ja/"> -->
+<% } %>
+<!-- <meta property="og:site_name" content=""> -->
+<meta property="og:title" content="<%= meta[lang][pagename].title %>">
+<!-- <meta property="og:image" content="https://teracy.io/<%- process.env.NODE_ENV !== 'production' ? 'dev/' : '' %>og-image-<%= lang %>.png"> -->
+<meta property="og:description" content="<%= meta[lang][pagename].description %>">
+<% if(process.env.NODE_ENV !== 'production') { %>
+<meta name="robots" content="none">
+<% } %>

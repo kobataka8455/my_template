@@ -45,4 +45,31 @@
   &__layout-image {
     flex-shrink: 0;
   }
+
+  // ---------------------------------------------------------
+  // smartphone
+  // ---------------------------------------------------------
+  @include s.sm {
+    padding: 80px 24px;
+
+    &__inner {
+      padding: 24px;
+    }
+
+    &__layout {
+      flex-direction: column-reverse;
+    }
+
+    &__head {
+      margin-bottom: s.$space;
+    }
+
+    &__title {
+      margin-bottom: s.$space * 2;
+    }
+
+    &__layout-image {
+      padding: 20px 0;
+    }
+  }
 }

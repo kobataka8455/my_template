@@ -12,7 +12,15 @@ body {
   @include s.font-type("body");
 
   min-width: var(--s-pc-w);
+  font-family: Avenir, -apple-system, Arial, "Helvetica Neue", Roboto, "Segoe UI", BlinkMacSystemFont, sans-serif;
   color: var(--c-text);
+
+  // ---------------------------------------------------------
+  // smartphone
+  // ---------------------------------------------------------
+  @include s.sm {
+    min-width: var(--s-sp-w);
+  }
 }
 
 img {

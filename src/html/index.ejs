@@ -1,13 +1,26 @@
 <% const EJS = `${process.cwd()}/src/ejs`; %>
-<div class="wrapper">
-  <%- include(`${EJS}/_header`) %>
-  <div class="contents">
-    <%- include(`${EJS}/_mv`) %>
-    <%- include(`${EJS}/_feature`) %>
-    <%- include(`${EJS}/_community`) %>
-    <%- include(`${EJS}/_appeal`) %>
-    <%- include(`${EJS}/_cv`) %>
-    <%- include(`${EJS}/_roadmap`) %>
-    <%- include(`${EJS}/_footer`) %>
+<% const LANG = `en`; %>
+
+<!DOCTYPE html>
+<html lang="<%= LANG === "jp" ? "ja" : "en" %>">
+
+<head>
+  <%- include(`${EJS}/_meta`, { lang:LANG, pagename:'top' }) %>
+</head>
+
+<body class="<%= LANG %>">
+  <div class="wrapper">
+    <%- include(`${EJS}/_header`) %>
+    <div class="contents">
+      <%- include(`${EJS}/_mv`) %>
+      <%- include(`${EJS}/_feature`) %>
+      <%- include(`${EJS}/_community`) %>
+      <%- include(`${EJS}/_appeal`) %>
+      <%- include(`${EJS}/_cv`) %>
+      <%- include(`${EJS}/_roadmap`) %>
+      <%- include(`${EJS}/_footer`) %>
+    </div>
   </div>
-</div>
+</body>
+
+</html>

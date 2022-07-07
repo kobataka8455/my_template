@@ -54,4 +54,38 @@
       bottom: 0;
     }
   }
+
+  // ---------------------------------------------------------
+  // smartphone
+  // ---------------------------------------------------------
+  @include s.sm {
+    padding: 80px 24px;
+    background: url("@/images/roadmap-bg1-sp.svg") 50% 50% no-repeat;
+    background-size: contain;
+
+    &__title {
+      margin-bottom: s.$space * 4;
+    }
+
+    &__content {
+      height: auto;
+    }
+
+    &__item {
+      position: static;
+      width: 100%;
+
+      &:nth-child(1) {
+        margin-bottom: s.$space * 4;
+      }
+
+      &:nth-child(2) {
+        margin-bottom: s.$space * 4;
+        transform: none;
+      }
+
+      // &:nth-child(3) {
+      // }
+    }
+  }
 }

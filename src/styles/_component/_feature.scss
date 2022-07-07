@@ -54,14 +54,47 @@
   &__layout.--second {
     flex-direction: row-reverse;
     margin-bottom: 64px;
-
-    // #{$this}__layout-main {
-    // width: calc(478 / 1440 * 100%);
-    // }
   }
 
   //  third
   // ---------------------------------------------------------
   // &__layout.--third{
   // }
+
+  // ---------------------------------------------------------
+  // smartphone
+  // ---------------------------------------------------------
+  @include s.sm {
+    padding: 80px 0;
+
+    &__layout {
+      flex-direction: column;
+      gap: 0;
+      padding: 0 24px;
+    }
+
+    &__layout-image {
+      width: calc(100% + 48px);
+      margin: 0 -24px;
+    }
+
+    //  first
+    // ---------------------------------------------------------
+    &__layout.--first {
+      #{$this}__layout-main {
+        padding-top: 0;
+      }
+    }
+
+    //  second
+    // ---------------------------------------------------------
+    &__layout.--second {
+      flex-direction: column;
+    }
+
+    //  third
+    // ---------------------------------------------------------
+    // &__layout.--third{
+    // }
+  }
 }

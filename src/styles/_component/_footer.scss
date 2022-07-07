@@ -36,6 +36,10 @@
     &:not(:last-child) {
       margin-bottom: s.$space * 3;
     }
+
+    a {
+      color: #cfdaea;
+    }
   }
 
   &__copy {
@@ -43,5 +47,35 @@
 
     margin-top: -1.5em;
     color: #5f6d82;
+  }
+
+  // ---------------------------------------------------------
+  // smartphone
+  // ---------------------------------------------------------
+  @include s.sm {
+    padding: 40px 24px;
+
+    &__layout {
+      flex-direction: column;
+    }
+
+    &__links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 0;
+      padding: 0 16px;
+      margin-bottom: s.$space * 5;
+      margin-left: 0;
+      white-space: nowrap;
+    }
+
+    &__link-item {
+      font-size: 1.6rem;
+    }
+
+    &__copy {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
   }
 }

@@ -1,6 +1,15 @@
 @use "sass:math";
 
 // ========================================
+// media query
+// ========================================
+@mixin sm {
+  @media screen and (max-width: 519px) {
+    @content;
+  }
+}
+
+// ========================================
 // font-size helper
 // ========================================
 @function decimal-round($number, $digits: 0, $mode: round) {
@@ -68,6 +77,15 @@
         decimal-floor(math.div($val, 1440) * 100, 1) * 1vw,
         math.div($val, 10) * 1rem
       );
+
+    @include sm {
+      font-size:
+        clamp(
+          math.div($val, 10) * 1rem,
+          decimal-floor(math.div($val, 320) * 100, 1) * 1vw,
+          math.div($val + 2, 10) * 1rem
+        );
+    }
   }
 }
 
@@ -79,10 +97,22 @@
     @include font-size(80);
 
     line-height: math.div(96, 80);
+
+    @include sm {
+      @include font-size(38);
+
+      line-height: math.div(48, 38);
+    }
   } @else if $type == "h2" {
     @include font-size(48);
 
     line-height: math.div(56, 48);
+
+    @include sm {
+      @include font-size(32);
+
+      line-height: math.div(43, 32);
+    }
   } @else if $type == "h3" {
     @include font-size(20);
 
