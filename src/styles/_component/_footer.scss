@@ -1,5 +1,6 @@
-@use "@/styles/_setting/index" as s;
 @use "sass:math";
+@use "@/styles/_mixins/index" as m;
+@use "@/styles/_variables/index" as v;
 
 /**
 * footer
@@ -24,26 +25,22 @@
   }
 
   &__link-title {
-    @include s.font-type("caption");
+    @include m.font-type("caption");
 
-    margin-bottom: s.$space * 2;
+    margin-bottom: v.$space * 2;
     color: #5f6d82;
   }
 
   &__link-item {
-    @include s.font-type("h4");
+    @include m.font-type("h4");
 
     &:not(:last-child) {
-      margin-bottom: s.$space * 3;
-    }
-
-    a {
-      color: #cfdaea;
+      margin-bottom: v.$space * 3;
     }
   }
 
   &__copy {
-    @include s.font-type("caption");
+    @include m.font-type("caption");
 
     margin-top: -1.5em;
     color: #5f6d82;
@@ -52,7 +49,7 @@
   // ---------------------------------------------------------
   // smartphone
   // ---------------------------------------------------------
-  @include s.sm {
+  @include m.sm {
     padding: 40px 24px;
 
     &__layout {
@@ -64,7 +61,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 24px 0;
       padding: 0 16px;
-      margin-bottom: s.$space * 5;
+      margin-bottom: v.$space * 5;
       margin-left: 0;
       white-space: nowrap;
     }

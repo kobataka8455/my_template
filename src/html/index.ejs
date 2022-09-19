@@ -1,25 +1,19 @@
 <% const EJS = `${process.cwd()}/src/ejs`; %>
-<% const LANG = `en`; %>
 
 <!DOCTYPE html>
-<html lang="<%= LANG === "jp" ? "ja" : "en" %>">
+<html lang="ja">
 
 <head>
-  <%- include(`${EJS}/_meta`, { lang:LANG, pagename:'top' }) %>
+  <%- include(`${EJS}/_meta`, { pagename:'top' }) %>
 </head>
 
-<body class="<%= LANG %>">
+<body>
   <div class="wrapper">
     <%- include(`${EJS}/_header`) %>
-    <div class="contents">
-      <%- include(`${EJS}/_mv`) %>
-      <%- include(`${EJS}/_feature`) %>
-      <%- include(`${EJS}/_community`) %>
-      <%- include(`${EJS}/_appeal`) %>
-      <%- include(`${EJS}/_cv`) %>
-      <%- include(`${EJS}/_roadmap`) %>
-      <%- include(`${EJS}/_footer`) %>
-    </div>
+    <main class="main">
+      <div style="height: 1000px">〜〜〜ここにコンテンツ〜〜〜</div>
+    </main>
+    <%- include(`${EJS}/_footer`) %>
   </div>
 </body>
 

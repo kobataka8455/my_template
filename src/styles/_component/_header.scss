@@ -1,5 +1,6 @@
-@use "@/styles/_setting/index" as s;
 @use "sass:math";
+@use "@/styles/_mixins/index" as m;
+@use "@/styles/_variables/index" as v;
 
 /**
 * header
@@ -10,14 +11,10 @@
   position: sticky;
   top: 0;
   left: 0;
-  line-height: 1;
-  background: var(--c-bg);
 
   &__inner {
     display: flex;
-    align-items: center;
-    width: 89vw;
-    min-width: var(--s-pc-w);
+    max-width: var(--s-pc-w);
     padding: 32px 0;
     margin: 0 auto;
   }
@@ -30,10 +27,8 @@
     display: none;
   }
 
-  &__nav-wrap {
-    display: flex;
-    align-items: center;
-  }
+  // &__nav-wrap {
+  // }
 
   // &__nav {
   // }
@@ -41,13 +36,14 @@
   &__nav-list {
     display: flex;
     gap: 8px 56px;
+    justify-content: flex-end;
   }
 
   // &__nav-item {
   // }
 
   &__nav-link {
-    color: #cfdaea;
+    // color: #cfdaea;
   }
 
   &__button {
@@ -61,22 +57,24 @@
     display: flex;
     align-items: center;
     padding: 8px 16px;
-    background: var(--c-bg);
-    border-radius: 999px;
-    transition: background var(--t-animation);
+
+    // background: var(--c-bg);
+    // border-radius: 999px;
+    // transition: background var(--t-animation);
 
     &::after {
       width: 24px;
       height: 24px;
       margin-left: 8px;
       content: "";
-      background: url("@/images/icon/arrow-right.svg") 0 0 no-repeat;
+
+      // background: url("@/images/icon/arrow-right.svg") 0 0 no-repeat;
     }
   }
 
   &__button:hover &__button-inner {
     &::after {
-      @include s.arrow;
+      // @include m.arrow;
     }
   }
 
@@ -102,14 +100,14 @@
   // ---------------------------------------------------------
   // smartphone
   // ---------------------------------------------------------
-  @include s.sm {
+  @include m.sm {
     // position: absolute;
     // width: 100%;
 
     &__inner {
       width: 100%;
       min-width: var(--s-sp-w);
-      padding: s.$space * 2 s.$space * 3;
+      padding: v.$space * 2 v.$space * 3;
     }
 
     &__sp-nav-button {
@@ -213,7 +211,7 @@
       flex-direction: column;
       gap: 32px;
       padding-top: 40px;
-      margin-bottom: s.$space * 4;
+      margin-bottom: v.$space * 4;
     }
 
     &__nav-link {

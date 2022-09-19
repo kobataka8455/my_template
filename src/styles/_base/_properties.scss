@@ -1,13 +1,13 @@
+@use "@/styles/_variables/index" as v;
+
 :root {
   // color
-  --c-text: #fff;
-  --c-bg: #1c2533;
-  --c-gradient: linear-gradient(86.02deg, #72a3f0 5.41%, #fae4ed 41.8%, #fac1ae 85.68%);
+  --c-text: #333;
 
   // time
   --t-animation: 0.3s;
 
   // size
-  --s-pc-w: 1000px;
-  --s-sp-w: 320px;
+  --s-pc-w: #{v.$pc-w}px;
+  --s-sp-w: #{v.$sp-w}px;
 }

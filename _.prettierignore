@@ -1,0 +1,4 @@
+*.html
+*.scss
+package.json
+package-lock.json

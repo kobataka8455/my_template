@@ -1,0 +1,138 @@
+@use "sass:math";
+@use "@/styles/_variables/index" as v;
+
+$sp-w: 375px; // design width
+
+// ========================================
+// media query
+// ========================================
+@mixin sm {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+// ========================================
+// font-size helper
+// ========================================
+@function decimal-round($number, $digits: 0, $mode: round) {
+  $n: 1;
+
+  @if type-of($number) != number {
+    @warn "#{ $number } is not a number.";
+    @return $number;
+  }
+
+  @if type-of($digits) != number {
+    @warn "#{ $digits } is not a number.";
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn "#{ $digits } has a unit.";
+    @return $number;
+  }
+
+  @if $digits > 0 {
+    @for $i from 1 through $digits {
+      $n: $n * 10;
+    }
+  }
+
+  @if $mode == round {
+    @return math.div(round($number * $n), $n);
+  } @else if $mode == ceil {
+    @return math.div(ceil($number * $n), $n);
+  } @else if $mode == floor {
+    @return math.div(floor($number * $n), $n);
+  } @else {
+    @warn "#{ $mode } is undefined keyword.";
+    @return $number;
+  }
+}
+
+@function decimal-ceil($number, $digits: 0) {
+  @return decimal-round($number, $digits, ceil);
+}
+
+@function decimal-floor($number, $digits: 0) {
+  @return decimal-round($number, $digits, floor);
+}
+
+// ========================================
+// font-size
+// ========================================
+@mixin font-size($val: 16) {
+  $min: 0;
+
+  @if $val <= 10 { // under 10
+    $min: 0;
+  } @else if $val >= 14 { // over 14
+    $min: $val - 4;
+  } @else { // 11 ~ 13
+    $min: 10;
+  }
+
+  @if $min == 0 {
+    font-size: math.div($val, 10) * 1rem;
+  } @else {
+    // pcの場合
+    font-size:
+      clamp(
+        math.div($min, 10) * 1rem,
+        decimal-floor(math.div($val, v.$pc-w) * 100, 1) * 1vw,
+        math.div($val, 10) * 1rem
+      );
+
+    // spの場合
+    @include sm {
+      font-size:
+        clamp(
+          math.div($val, 10) * 1rem,
+          decimal-floor(math.div($val, v.$sp-w) * 100, 1) * 1vw,
+          math.div($val + 2, 10) * 1rem
+        );
+    }
+  }
+}
+
+// ========================================
+// font-type
+// ========================================
+@mixin font-type($type: "body") {
+  @if $type == "h1" {
+    @include font-size(80);
+
+    line-height: math.div(96, 80);
+
+    @include sm {
+      @include font-size(38);
+
+      line-height: math.div(48, 38);
+    }
+  } @else if $type == "h2" {
+    @include font-size(48);
+
+    line-height: math.div(56, 48);
+
+    @include sm {
+      @include font-size(32);
+
+      line-height: math.div(43, 32);
+    }
+  } @else if $type == "h3" {
+    @include font-size(20);
+
+    line-height: math.div(32, 20);
+  } @else if $type == "h4" {
+    @include font-size(16);
+
+    line-height: math.div(24, 16);
+  } @else if $type == "body" {
+    @include font-size(16);
+
+    line-height: math.div(32, 16);
+  } @else if $type == "caption" {
+    @include font-size(12);
+
+    line-height: math.div(22, 12);
+  }
+}

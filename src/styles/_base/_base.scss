@@ -1,4 +1,4 @@
-@use "@/styles/_setting/index" as s;
+@use "@/styles/_mixins/index" as m;
 
 /**
 * base
@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  @include s.font-type("body");
+  @include m.font-type("body");
 
   min-width: var(--s-pc-w);
   font-family: Avenir, -apple-system, Arial, "Helvetica Neue", Roboto, "Segoe UI", BlinkMacSystemFont, sans-serif;
@@ -18,7 +18,7 @@ body {
   // ---------------------------------------------------------
   // smartphone
   // ---------------------------------------------------------
-  @include s.sm {
+  @include m.sm {
     min-width: var(--s-sp-w);
   }
 }
@@ -82,8 +82,5 @@ button {
 }
 
 .wrapper {
-  background: var(--c-bg);
+  // background: var(--c-bg);
 }
-
-// .contents {
-// }

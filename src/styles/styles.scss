@@ -1,14 +1,6 @@
 // base
-@use "./_base/index";
+@use "@/styles/_base/index";
 
 // header
-@use "./_component/header";
-@use "./_component/footer";
-
-// component
-@use "./_component/mv";
-@use "./_component/feature";
-@use "./_component/community";
-@use "./_component/appeal";
-@use "./_component/cv";
-@use "./_component/roadmap";
+@use "@/styles/_component/header";
+@use "@/styles/_component/footer";
