@@ -9,12 +9,24 @@ const common = require("./webpack.common.js");
 module.exports = merge(common, {
   mode: "production",
   devtool: false,
-  stats: "errors-only",
+  stats: {
+    builtAt: false,
+    children: false,
+    modules: false,
+    version: false
+  },
   bail: true,
   optimization: {
     minimizer: [
       new TerserPlugin({
         extractComments: false,
+        // terser のオプション
+        terserOptions: {
+          // console を削除する
+          compress: {
+            drop_console: true,
+          },
+        },
       }),
     ],
   },
