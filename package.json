@@ -2,13 +2,22 @@
   "name": "template",
   "version": "1.0.0",
   "description": "template",
+  "config": {
+    "breakpoints": {
+      "xs": 0,
+      "sm": 576,
+      "md": 768,
+      "lg": 992,
+      "xl": 1200
+    }
+  },
   "scripts": {
     "lint": "npm run lint:styles; npm run lint:scripts",
     "lint:styles": "stylelint src/styles",
     "lint:scripts": "eslint src/scripts",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
-    "build:dev": "webpack --config webpack/webpack.config.prod.js",
-    "start": "webpack serve --port 8888 --config webpack/webpack.config.dev.js",
+    "build:dev": "cross-env NODE_ENV=development webpack --config webpack/webpack.config.prod.js",
+    "start": "cross-env NODE_ENV=development webpack serve --port 8888 --config webpack/webpack.config.dev.js",
     "deploy": "npm run build:dev && rsync -auvz -e 'ssh -i ~/.ssh/(secretKey)' build/* user@server:/var/www/html/dev/"
   },
   "author": "kobataka0505",

@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { htmlWebpackPluginTemplateCustomizer } = require("template-ejs-loader");
 
 module.exports = {
   stats: 'errors-only',
@@ -22,14 +23,25 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: path.resolve(__dirname, "../src/html/index.ejs"),
-      minify: false,
+      template: htmlWebpackPluginTemplateCustomizer({
+        templatePath: path.resolve(__dirname, "../src/html/index.ejs"),
+        htmlLoaderOption: {
+          minimize: process.env.NODE_ENV === "production" ? false : true, // html-loaderのminify設定
+        },
+        templateEjsLoaderOption: {
+          data: {
+            EJS: path.resolve(__dirname, "../src/ejs/"),
+          }
+        },
+      }),
+      inject: process.env.NODE_ENV === "production" ? false : "head",
+      minify: process.env.NODE_ENV === "production" ? false : true,
       // chunks: ['top'], // ページ毎にJSを分けたいとき
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-    }),
+    })
   ],
   resolve: {
     alias: {
@@ -48,9 +60,6 @@ module.exports = {
         use: [
           {
             loader: "html-loader",
-            options: {
-              minimize: false,
-            },
           },
           {
             loader: "template-ejs-loader",

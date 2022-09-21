@@ -1,5 +1,4 @@
 const path = require("path");
-const Webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const StylelintPlugin = require("stylelint-webpack-plugin");
@@ -23,9 +22,6 @@ module.exports = merge(common, {
     open: true,
   },
   plugins: [
-    new Webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("development"),
-    }),
     new ESLintPlugin({
       extensions: "js",
       emitWarning: true,

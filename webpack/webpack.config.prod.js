@@ -1,5 +1,4 @@
 const path = require("path");
-const Webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -43,8 +42,6 @@ module.exports = merge(common, {
     // 		},
     // 	],
     // }),
-    new Webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production"),
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name].[chunkhash:8].css",
