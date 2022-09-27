@@ -29,7 +29,8 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack/webpack.config.prod.js",
     "start": "cross-env NODE_ENV=development webpack serve --port 8888 --config webpack/webpack.config.dev.js",
-    "deploy": "npm run build:dev && rsync -auvz -e 'ssh -i ~/.ssh/(secretKey)' build/* user@server:/var/www/html/dev/"
+    "deploy": "npm run build:dev && rsync -auvz -e 'ssh -i ~/.ssh/(secretKey)' build/* user@server:/var/www/html/dev/",
+    "prepare": "husky install"
   },
   "author": "kobataka0505",
   "devDependencies": {
