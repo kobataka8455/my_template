@@ -2,16 +2,16 @@
 <html lang="ja">
 
 <head>
-  <%- include(`${EJS}/_meta`, { pagename:'top' }) %>
+  <%- include(`${path.ejs}/_meta`, { pagename:'top' }) %>
 </head>
 
 <body>
   <div class="wrapper">
-    <%- include(`${EJS}/_header`) %>
+    <%- include(`${path.ejs}/_header`) %>
     <main class="main">
       <div style="height: 1000px">〜〜〜ここにコンテンツ〜〜〜</div>
     </main>
-    <%- include(`${EJS}/_footer`) %>
+    <%- include(`${path.ejs}/_footer`) %>
   </div>
 </body>
 

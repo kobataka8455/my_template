@@ -5,7 +5,7 @@
 // media query
 // ========================================
 @mixin sm {
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: v.$breakpoint-md) {
     @content;
   }
 }

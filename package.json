@@ -26,9 +26,9 @@
     "lint": "npm run lint:styles; npm run lint:scripts",
     "lint:styles": "stylelint src/styles",
     "lint:scripts": "eslint src/scripts",
-    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
-    "build:dev": "cross-env NODE_ENV=development webpack --config webpack/webpack.config.prod.js",
-    "start": "cross-env NODE_ENV=development webpack serve --port 8888 --config webpack/webpack.config.dev.js",
+    "build": "node task/create-scss-val.js && cross-env NODE_ENV=production webpack --config task/webpack.config.prod.js",
+    "build:dev": "node task/create-scss-val.js && cross-env NODE_ENV=development webpack --config task/webpack.config.prod.js",
+    "start": "node task/create-scss-val.js && cross-env NODE_ENV=development webpack serve --port 8888 --config task/webpack.config.dev.js",
     "deploy": "npm run build:dev && rsync -auvz -e 'ssh -i ~/.ssh/(secretKey)' build/* user@server:/var/www/html/dev/",
     "prepare": "husky install"
   },

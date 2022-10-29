@@ -22,7 +22,7 @@ const meta = {
 <meta property="og:image" content="**********">
 <meta property="og:description" content="<%= meta[pagename].description %>">
 
-<% if(process.env.NODE_ENV !== 'production') { %>
+<% if(!isProd) { %>
 <!-- build以外ではクロールさせない -->
 <meta name="robots" content="none">
 <% } %>
