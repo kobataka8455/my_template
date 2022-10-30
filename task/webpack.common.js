@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { htmlWebpackPluginTemplateCustomizer } = require("template-ejs-loader");
 const glob = require("glob");
 const pkConfig = require("../package.json").config;
+const WebpackIconfontPluginNodejs = require('webpack-iconfont-plugin-nodejs');
 
 /*
  * data
@@ -12,6 +13,9 @@ const pkConfig = require("../package.json").config;
 const isProd = process.env.NODE_ENV === "production";
 const config = {
   path: {
+    main: {
+      root: path.resolve(__dirname, "../src"),
+    },
     html: {
       root: path.resolve(__dirname, "../src/html/"),
       glob: path.resolve(__dirname, "../src/html/**/*.ejs"),
@@ -65,10 +69,29 @@ const htmlGlobPlugins = (_entries) => {
           }
         },
       }),
-      inject: isProd ? false : "head",
+      inject: "head", // memo: isProd ? false : "head",
       minify: isProd,  // html-webpack-pluginのminify設定
     }),
   );
+};
+const runIconFont = () => {
+  // icons/svgフォルダにファイルが有るか確認
+  const iconFontFiles = glob.sync(config.path.main.root + "/icons/svg/*.svg");
+  if (iconFontFiles.length > 0) {
+    return new WebpackIconfontPluginNodejs({
+      fontName: 'icons',
+      cssPrefix: 'ic',
+      svgs: path.join(config.path.main.root, "/icons/svg/**/*.svg"),
+      formats: ['eot', 'woff2', 'woff', 'ttf'],
+      fontsOutput: path.join(config.path.main.root, "/icons/"),
+      template: path.join(config.path.main.root, "/icons/templates/scss.njk"),
+      cssOutput: path.join(config.path.main.root, "/styles/_mixins/_icons.scss"),
+      cssFontPath: '../icons',
+      htmlOutput: false
+    });
+  } else {
+    return () => { };
+  }
 };
 
 /*
@@ -77,7 +100,7 @@ const htmlGlobPlugins = (_entries) => {
 const modules = {
   stats: 'errors-only',
   entry: {
-    app: path.resolve(__dirname, "../src/scripts/index.js"),
+    app: path.join(config.path.main.root, "/scripts/index.js"),
   },
   output: {
     path: config.path.build.root,
@@ -95,11 +118,12 @@ const modules = {
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-    })
+    }),
+    runIconFont(),
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "../src"),
+      "@": config.path.main.root,
     },
   },
   module: {

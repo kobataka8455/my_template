@@ -2,7 +2,7 @@ const path = require("path");
 const { merge } = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-// const CopyWebpackPlugin = require("copy-webpack-plugin");
+// const CopyWebpackPlugin = require("copy-webpack-plugin"); // フォルダコピー用
 const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
@@ -81,24 +81,24 @@ module.exports = merge(common, {
         ],
       },
       {
-        test: /\.(woff|woff2)(\?.*)?$/,
+        test: /\.(eot|ttf|woff|woff2)(\?.*)?$/,
         type: "asset/resource",
         generator: {
-          filename: "fonts/[hash][ext]",
+          filename: "icons/[name].[hash][ext]",
         },
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|webp|svg)(\?.*)?$/,
         type: "asset/resource",
         generator: {
-          filename: "images/[hash][ext]",
+          filename: "images/[name].[hash][ext]",
         },
       },
       {
         test: /\.(mp4|webm)(\?.*)?$/,
         type: "asset/resource",
         generator: {
-          filename: "movies/[hash][ext]",
+          filename: "movies/[name].[hash][ext]",
         },
       },
     ],

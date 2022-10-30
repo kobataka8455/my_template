@@ -1,0 +1,65 @@
+/* stylelint-disable */ 
+@mixin font-face {
+@font-face {
+  font-family: "{{ fontName }}";
+  font-weight: normal;
+  font-style: normal;
+  {% if formats.indexOf('eot')>-1 -%}
+    src: url("{{ cssFontPath }}{{ fontName }}.eot");
+  {%- endif -%}
+  src:
+  {%- set eotIndex = formats.indexOf('eot') -%}
+    {% if eotIndex != -1 -%}
+        url("{{ cssFontPath }}{{ fontName }}.eot?{{ fileMark }}#iefix") format("embedded-opentype")
+      {%- set nothing = formats.splice(eotIndex, 1) -%}
+      {%- if formats.length != 0 -%},
+        {% else -%}; {% endif -%}
+    {%- endif -%}
+  {%- set woff2Index = formats.indexOf('woff2') -%}
+    {%- if woff2Index != -1 -%}
+      url("{{ cssFontPath }}{{ fontName }}.woff2?{{ fileMark }}") format("woff2")
+      {%- set nothing = formats.splice(woff2Index, 1) -%}
+      {%- if formats.length != 0 -%},
+        {% else -%}; {% endif -%}
+    {%- endif -%}
+  {%- set woffIndex = formats.indexOf('woff') -%}
+    {%- if woffIndex != -1 -%}
+      url("{{ cssFontPath }}{{ fontName }}.woff?{{ fileMark }}") format("woff")
+      {%- set nothing = formats.splice(woffIndex, 1) -%}
+      {%- if formats.length != 0 -%},
+        {% else -%}; {% endif -%}
+    {%- endif -%}
+  {%- set ttfIndex = formats.indexOf('ttf') -%}
+    {%- if ttfIndex != -1 -%}
+      url("{{ cssFontPath }}{{ fontName }}.ttf?{{ fileMark }}") format("truetype")
+      {%- set nothing = formats.splice(ttfIndex, 1) -%}
+      {%- if formats.length != 0 -%},
+        {% else -%}; {% endif -%}
+    {%- endif -%}
+  {%- set svgIndex = formats.indexOf('svg') -%}
+    {%- if svgIndex != -1 -%}
+      url("{{ cssFontPath }}{{ fontName }}.svg?{{ fileMark }}#{{ fontName }}") format("svg");
+    {%- endif %}
+}
+}
+
+@mixin icon-base {
+  font-family: "{{ fontName }}";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+}
+{% for glyph in glyphs %}
+@mixin {{ cssPrefix }}-{{ glyph.name }}($add:"none") {
+  @include icon-base;
+
+  @if $add == "none" {
+    content: "\{{ glyph.unicode[0].charCodeAt(0).toString(16) }}";
+  } @else {
+    &::#{$add} {
+      content: "\{{ glyph.unicode[0].charCodeAt(0).toString(16) }}";
+    }
+  }
+}
+{% endfor %}
+/* stylelint-enable */
